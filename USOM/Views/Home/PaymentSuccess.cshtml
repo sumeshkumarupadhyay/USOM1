@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="images/dollar.png" type="image/png" sizes="16x16">
+    <title>Payment Success</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link href="~/Content/web/assets/css/payment.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="printer-top"></div>
+
+        <div class="paper-container">
+            <div class="printer-bottom"></div>
+
+            <div class="paper">
+                <div class="main-contents">
+                    <div class="success-icon">&#10004;</div>
+                    <div class="success-title">
+                        Payment Complete
+                    </div>
+                    <div class="success-description">
+                        Thank you for completing the payment! You will shortly receive an email of your payment.
+                    </div>
+                    <div class="order-details">
+                        <div class="order-number-label">Order ID</div>
+                        <div class="order-number">@ViewBag.OrderId</div>
+                        <div class="complement">Thank You! <br/><a href="/" class="button-like">Home</a></div>
+                    </div>
+                </div>
+                <div class="jagged-edge"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

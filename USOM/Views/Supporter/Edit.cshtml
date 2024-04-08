@@ -1,0 +1,55 @@
+﻿@model supporterViewModel
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.Page = "supporter";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <div class="pull-right tableTools-container"></div>
+        </div>
+
+        <div class="col-xs-10 col-lg-10">
+            <!-- PAGE CONTENT BEGINS -->
+            @using (Html.BeginForm("Edit", "supporter", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", @id = "Announcement-form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(a => a.Id)
+
+                <div class="form-group">
+                    <label for="form-field-1">Enter Heading<strong style="color: red">*</strong></label>
+                    @Html.TextBoxFor(a => a.Title, new { @class = "form-control", placeholder = "Enter Heading", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="form-field-1">Upload an Image <br /><strong style="color:red">Image Dimentions should be 848 x 600 px and max size 512 KB</strong> </label>
+
+                    <input type="file" name="File" id="id-input-file-2" />
+                </div>
+                <div class="space-4"></div>
+                <div class="clearfix form-actions">
+                    <div>
+                        <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+                <div class="hr hr-24"></div>
+            }
+
+            <div class="hr hr-18 dotted hr-double"></div>
+
+            <!-- PAGE CONTENT ENDS -->
+        </div>
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+    </div>
+</div>

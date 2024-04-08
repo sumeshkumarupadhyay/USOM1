@@ -1,0 +1,94 @@
+﻿@model BlogEntity
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Keywords = Model.Tags;
+    ViewBag.MetaImage = GetFileAddress.Blog + "/" + Model.FilePath;
+    ViewBag.MetaDescription = Model.Description.Substring(0, 10) + "...";
+
+}
+<section id="subheader" data-speed="8" data-type="background" style="background-image: url(../../Content/web/assets/images/background/subheader-3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Blog Details</h1>
+                <ul class="crumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>@Model.BlogCategory.Title</li>
+                    <li class="sep">/</li>
+                    <li>@Model.Title</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-read">
+                    <div class="post-content">
+                        <div class="post-image">
+                            <img src="@GetFileAddress.Blog/@Model.FilePath" alt="" />
+                        </div>
+
+                        <div class="date-box">
+                            <div class="day">@Model.LastModificationDate.Value.ToString("dd")</div>
+                            <div class="month">@Model.LastModificationDate.Value.ToString("MMM")</div>
+                        </div>
+
+                        <div class="post-text">
+                            <h3><a href="#">@Model.Title</a></h3>
+                            <p>
+                                @Html.Raw(Model.Description)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="spacer-single"></div>
+
+                </div>
+
+
+            </div>
+
+            <div id="sidebar" class="col-md-4">
+                <div class="widget widget-post">
+                    <h4>Related Blogs</h4>
+                    <div class="small-border"></div>
+
+                    <ul class="de-bloglist-type-1">
+
+                        @foreach (var item in ViewBag.RelatedBlog)
+                        {
+                            <li>
+                                <div class="d-image">
+                                    <img src="@GetFileAddress.Blog/@item.FilePath" alt="">
+                                </div>
+                                <div class="d-content">
+                                    <a href="/Blogs-details/@item.Id/@SlugifyText.GenerateSlug(item.Title)">@item.Title</a>
+                                    <div class="d-date">@item.LastModificationDate.ToString("MMM dd , yyyy")</div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                @*<div class="widget widget_tags">
+                    <h4>Tags</h4>
+                    <div class="small-border"></div>
+                    <ul>
+                        @foreach (var item in ViewBag.blogCategories)
+                        {
+                            <li><a href="/Blogs/@item.Id/@SlugifyText.GenerateSlug(item.Title)">@item.Title</a></li>
+                        }
+                    </ul>
+                </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>

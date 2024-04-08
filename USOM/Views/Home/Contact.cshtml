@@ -1,0 +1,143 @@
+﻿@model ContactUsEntity
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Contact</h1>
+                <ul class="crumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+<div id="content" class="no-top">
+    <section id="de-map" aria-label="map-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="map-container map-fullwidth">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7327936.2567976955!2d76.84785827933696!3d26.258616497628225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18e13acccaa7%3A0x506e204b4aadefdd!2sGlobal%20Cancer%20Concern%20India!5e0!3m2!1sen!2sin!4v1688730672987!5m2!1sen!2sin" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-8">
+
+                @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "contact_form", onsubmit = "return confirm('Do you really want to submit the form?');" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+                    <div class="row">
+                        <div class="col-md-12 mb10">
+                            <h3>Send Us Message</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <div id='name_error' class='error'>Please enter your name.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Name, new { @class = "form-control", placeholder = "Enter your name", required = "required" })
+                            </div>
+
+                            <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Email, new { @class = "form-control", placeholder = "Enter Email", required = "required", type = "Email" })
+                            </div>
+
+                            <div id='phone_error' class='error'>Please enter your phone number.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone number", required = "required", type = "text", maxlength = "10", pattern = "[6-9]{1}[0-9]{9}" })
+                            </div>
+                            <div class='error'>Please enter your phone number.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Subject, new { @class = "form-control", placeholder = "Enter Subject", required = "required" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id='message_error' class='error'>Please enter your message.</div>
+                            <div>
+                                @Html.TextAreaFor(a => a.Message, new { @class = "form-control", placeholder = "Enter Message", required = "required" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="g-recaptcha" data-sitekey="6LcgXh4nAAAAAGBlt5h2DHCKZ9uFNnVtWYwDX3JH"></div>
+                            <p id='submit' class="mt20">
+                                <input type='submit' id='send_message' value='Submit Form' class="btn btn-line">
+                            </p>
+                        </div>
+                    </div>
+                }
+                <div id="success_message" class='success'>
+                    Your message has been sent successfully. Refresh this page if you want to send more messages.
+                </div>
+                <div id="error_message" class='error'>
+                    Sorry there was an error sending your form.
+                </div>
+
+            </div>
+
+            <div id="sidebar" class="col-md-4">
+
+                <div class="widget widget_text">
+                    <h3>Contact Info</h3>
+                    <address>
+                        <span>
+                            <strong>Address:</strong>Plot No. 90/24/2, Ground Floor
+                            Near 100 Foota Road Ghitorni
+                            New Delhi-110030
+                        </span>
+                        <span><strong>Phone:</strong>011-61810307</span>
+                        @*<span><strong>Fax:</strong>(208) 333 9298</span>*@
+                        <span><strong>Email:</strong><a href="mailto:ho@gcci.org.in">ho@gcci.org.in</a></span>
+                        <span><strong>Web:</strong><a href="#test">http://example.com</a></span>
+                        @*<span><strong>Open</strong>Sunday - Friday 08:00 - 18:00</span>*@
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Message !!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @TempData["Message"]
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content END-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script>
+        $("document").ready(function () {
+            @if (TempData["success"] != null && (bool)TempData["success"])
+            {
+                @:$('#staticBackdrop').modal('show');
+            }
+        })
+
+</script>

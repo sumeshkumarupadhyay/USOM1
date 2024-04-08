@@ -1,0 +1,155 @@
+﻿@model DonationEntity
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- content begin -->
+<div id="content" class="no-top" style="background-color:white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 offset-md-3 text-center wow fadeInUp">
+                <img class="logo-small img-fluid mx-auto d-block" src="~/Content/web/assets/gcci-logo.png" alt="Your Logo" style="display: block; margin: 0 auto; width:100%">
+            </div>
+
+            <div class="col-md-8 offset-md-2">
+                @if (TempData["success"] != null && (bool)TempData["success"])
+                {
+                    <h4 class="bg-success text-white" style="background-color: #28a745!important">@TempData["Message"] </h4>
+                    TempData["success"] = null;
+                    TempData["Message"] = null;
+                }
+                else
+                {
+                    <h4 class="bg-danger text-white">@TempData["Message"] </h4>
+                    TempData["oops"] = null;
+                    TempData["Message"] = null;
+                }
+                @using (Html.BeginForm("Payment", "Home", FormMethod.Post, new { @id = "contact_form", onsubmit = "return confirm('Do you really want to submit the form?');" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary()
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id='name_error' class='error'>Amount.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Amount, new
+                                {
+                                @class = "form-control",
+                                placeholder = "Enter Amount",
+                                required = "required",
+                                pattern = "[1-9][0-9]*",
+                                title = "Please enter a valid amount (non-zero positive integer)"
+                                })
+                            </div>
+
+                            <div id='name_error' class='error'>Please enter your name.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Name, new { @class = "form-control capitalize-first-letter", placeholder = "Enter your name", required = "required" })
+
+                            </div>
+
+                            <div id='email_error' class='error'>Please enter your valid E-mail ID.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Email, new { @class = "form-control", placeholder = "Enter Email", required = "required", type = "Email" })
+
+                            </div>
+
+                            <div id='phone_error' class='error'>Please enter your Phone number.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control", placeholder = "Enter Phone number", required = "required", type = "text", maxlength = "10", pattern = "[6-9]{1}[0-9]{9}", title = "Please enter a valid Phone Number" })
+
+                            </div>
+                            @*<div id='phone_error' class='error'>Please enter your Pan number.</div>
+                                <div>
+                                    @Html.TextBoxFor(a => a.PanNumber, new { @class = "form-control", placeholder = "Enter Pan number all in Capital letter only", required = "required", type = "text", maxlength = "10", pattern = "[A-Z]{5}[0-9]{4}[A-Z]{1}", title = "Please enter a valid Pan Number and All in Capital Letter",style="margin-bottom:0;" })
+                                    @Html.ValidationMessageFor(a => a.PanNumber, "Please enter a valid Pan Number. Use capital letters only.", new { @class = "text-danger",style = "padding: 0; margin-top: 0;"  })
+                                </div>*@
+                            <div id='phone_error' class='error'>Please enter your Address.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Address, new { @class = "form-control capitalize-first-letter", placeholder = "Enter Address", required = "required", type = "text", data_capitalize = "true" })
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+
+
+
+                            <div id='phone_error' class='error'>Please enter your City.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.City, new { @class = "form-control capitalize-first-letter", placeholder = "Enter City", required = "required", type = "text", data_capitalize = "true" })
+
+                            </div>
+                            <div id='phone_error' class='error'>Please enter your State.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.State, new { @class = "form-control capitalize-first-letter", placeholder = "Enter State", required = "required", type = "text" })
+
+                            </div>
+
+                            <div id='phone_error' class='error'>Please enter your Country.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.Country, new { @class = "form-control capitalize-first-letter", placeholder = "Enter Country", required = "required", type = "text", data_capitalize = "true" })
+
+                            </div>
+
+                            <div id='phone_error' class='error'>Please enter your Pincode.</div>
+                            <div>
+                                @Html.TextBoxFor(a => a.PinCode, new { @class = "form-control", placeholder = "Enter Pincode", required = "required", type = "text" })
+
+                            </div>
+
+                            @*<div id='message_error' class='error'>Please enter your message.</div>
+                                <div>
+                                    @Html.TextAreaFor(a => a.Message, new { @class = "form-control", placeholder = "Enter Message", required = "required" })
+
+                                </div>*@
+                        </div>
+                        <div class="col-md-12" style="margin-top:10px">
+                            <div id='message_error' class='error'>Please enter your message.</div>
+                            <div>
+                                @Html.TextAreaFor(a => a.Message, new { @class = "form-control", placeholder = "Enter Message" })
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <p id='submit' class="mt20">
+                                <input type='submit' id='send_message' value='Submit Form' class="btn btn-danger btn-lg">
+                            </p>
+                        </div>
+                    </div>
+                }
+
+                <div id="success_message" class='success'>
+                    Your message has been sent successfully. Refresh this page if you want to send more messages.
+                </div>
+                <div id="error_message" class='error'>
+                    Sorry there was an error sending your form.
+                </div>
+                <br style="clear:both;" />
+                <p class="lead text-justify" style="color:black">DISCLAIMER : THIS IS TO DECLARE THAT GLOBAL CANCER CONCERN INDIA DOES NOT USE ANY CONTRACTUAL FUND RASING NGO/AGENCY/INDIVIDUALS TO RAISE FUNDS ON OUR BEHALF.</p>
+                <p class="lead text-justify" style="color:black">WE ARE NOT IN PARTNERSHIP WITH ANY OTHER NGO/AGENCY/PERSON IN OUR WELFARE EFFORTS.</p>
+                <p class="lead text-justify" style="color:black">ANYONE MISUSING OUR NAME IS LIABLE FOR PROSECUTION.</p>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.capitalize-first-letter').blur(function () {
+                var value = $(this).val();
+                var capitalizedValue = value.toLowerCase().replace(/(?:^|\s)\S/g, function (firstLetter) {
+                    return firstLetter.toUpperCase();
+                });
+                $(this).val(capitalizedValue);
+            });
+        });
+    </script>
+}
+
+
+

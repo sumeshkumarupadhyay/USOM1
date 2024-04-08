@@ -1,0 +1,50 @@
+﻿@model IList<ServiceEntity>
+@{
+    ViewBag.Title = "Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background" style="background-image: url(../../Content/web/assets/images/background/subheader-3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Services</h1>
+                <ul class="crumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>Services</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row g-2">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="de-post-poster">
+                        <a class="d-overlay" href="/Services-details/@item.Id/@SlugifyText.GenerateSlug(item.Title)">
+                            <div class="d-content">
+                                @*<span class="d-tag text-dark">Inspiration</span>*@
+                                <h3>@item.Title</h3>
+                                <span class="d-date">@item.LastModificationDate.Value.ToString("MMMM dd , yyyy")</span>
+                            </div>
+                        </a>
+                        <div class="d-image" data-bgimage="url('@GetFileAddress.Service/@item.FilePath')"></div>
+                    </div>
+                    
+
+                    <div class="spacer-single"></div>
+                </div>
+            }
+            </div>
+</div>
+

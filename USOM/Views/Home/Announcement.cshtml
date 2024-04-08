@@ -1,0 +1,54 @@
+﻿@model IList<AnnouncementEntity>
+
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background" style="background-image: url(../../Content/web/assets/images/background/subheader-3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Publication</h1>
+                <ul class="crumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>Publication</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<div class="container" style="
+    padding-bottom: 90px;
+    padding-top: 90px;
+">
+    <table class="table table">
+        <thead class="thead">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Link</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @{int i = 0; }
+            @foreach (var item in Model)
+            {
+                i++;
+                <tr>
+                    <th scope="row">@i</th>
+                    <td style="width:30%">@item.Title</td>
+                    <td><a href="@GetFileAddress.Announcement/@item.FilePath" target="_blank">Click here to open</a></td>
+
+                </tr>
+
+            }
+        </tbody>
+
+    </table>
+</div>

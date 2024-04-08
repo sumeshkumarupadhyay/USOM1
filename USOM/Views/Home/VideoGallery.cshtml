@@ -1,0 +1,48 @@
+﻿@model IList<GalleryVideoEntity>
+
+@{
+    ViewBag.Title = "VideoGallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="subheader" data-speed="8" data-type="background" style="background-image: url(../../Content/web/assets/images/background/subheader-3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Video Gallery</h1>
+                <ul class="crumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>Video Gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--==============================
+Our Restaurant Area
+==============================-->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb30">
+                    <div class="bloglist item">
+                        <div class="post-content">
+                            <div class="post-image">
+                                <a class="image-popup-no-margins">
+                                    <iframe style="width:100%;height:300px" src="@Url.Content(USOM.MimeType.ConvertUrlToYouTubeEmbedCode(item.YoutubeVideoLink))" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                </a>
+                            </div>
+                            <div class="post-text">
+                                @*<span class="p-tagline">Tips &amp Tricks</span>*@
+                                <h4><a href="#">@item.Title</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

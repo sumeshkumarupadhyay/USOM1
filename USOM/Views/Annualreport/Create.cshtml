@@ -1,0 +1,71 @@
+﻿@model AnnualReportViewModel
+@{
+    ViewBag.Title = "Create";
+    ViewBag.Page = "AnnualReport";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <div class="pull-right tableTools-container"></div>
+        </div>
+
+        <div class="col-xs-10 col-lg-6">
+            <!-- PAGE CONTENT BEGINS -->
+            @using (Html.BeginForm("Create", "AnnualReport", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", @id = "Announcement-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="form-field-1">Enter Title<strong style="color: red">*</strong></label>
+                    @Html.TextBoxFor(a => a.Title, new { @class = "form-control", placeholder = " Enter Title", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="form-field-1">Enter Document Link<strong style="color: red">*</strong></label>
+                    @Html.TextBoxFor(a => a.DocumentLink, new { @class = "form-control", placeholder = " Enter Document link", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="form-field-1">Enter Document Year<strong style="color: red">*</strong></label>
+                    @Html.TextBoxFor(a => a.YearofDocument, new { @class = "form-control", placeholder = " Enter Document Year", required = "required" })
+                </div>
+                @*<div class="form-group">
+                <label for="form-field-1">Heading for AnnualReport Image<strong style="color: red"> <br />Max 30 characters</strong></label>
+                @Html.TextBoxFor(a => a.Captions, new { @maxlength = "30", @class = "form-control", placeholder = " Heading for AnnualReport Image" })
+            </div>*@
+                @*<div class="form-group">
+                <label for="form-field-1">Enter Caption<strong style="color: red"> <br />Max 115 characters</strong></label>
+                @Html.TextBoxFor(a => a.SubCaptions, new { @maxlength = "115", @class = "form-control", placeholder = "Captions"})
+            </div>*@
+                <div class="form-group">
+                    <label for="form-field-1">Choose Document<strong style="color: red">*</strong><br /></label>
+
+                    <input type="file" name="File" id="id-input-file-2" required />
+                </div>
+                <div class="space-4"></div>
+
+                <div class="clearfix form-actions">
+                    <div>
+                        <button class="btn btn-primary" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn btn-warning" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+                <div class="hr hr-24"></div>
+            }
+
+            <div class="hr hr-18 dotted hr-double"></div>
+
+            <!-- PAGE CONTENT ENDS -->
+        </div>
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+    </div>
+</div>
+

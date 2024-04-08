@@ -1,0 +1,44 @@
+﻿@model IList<PublicationTypeEntity>
+@{
+    ViewBag.Title = "Publication Types";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="section-about" data-bgcolor="#853f40">
+    <div class="container">
+        <div class="row">
+            <div class="row align-items-center">
+                <div class="col-md-7 offset-md-3 text-center wow fadeInUp">
+                    <h2 class="heading-with-underline">Publications  </h2>
+
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-12 container-4 wow fadeInUp">
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-lg-3 col-md-4">
+                                <div class="book">
+                                    <a href="/Publications/@item.Id/@SlugifyText.GenerateSlug(item.Title)" target="_blank">
+                                        <img src="@GetFileAddress.PublicationType/@item.FilePath" alt="Book 1" class="img-responsive" />
+                                    </a>
+                                    <a href="/Publications/@item.Id/@SlugifyText.GenerateSlug(item.Title)" target="_blank">
+                                        <h4>
+                                            
+                                            @item.Title
+                                        </h4>
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>

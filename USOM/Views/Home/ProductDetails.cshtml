@@ -1,0 +1,103 @@
+﻿@model ProductsEntity
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breatcome_area d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breatcome_title">
+                    <div class="breatcome_title_inner pb-2">
+                        <h2>Product Details</h2>
+                    </div>
+                    <div class="breatcome_content">
+                        <ul>
+                            <li><a href="/">Home</a> <i class="fa fa-angle-right"></i> <a href="#"> Product details</a> <i class="fa fa-angle-right"></i> <span>@Model.Title</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog_area blog-details-area pt-100 pb-100" id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="blog_details">
+                            <div class="blog_dtl_thumb">
+                                <img src="@GetFileAddress.Products/@Model.FilePath" alt="" />
+                            </div>
+
+                            <div class="blog_dtl_content">
+
+                                <h2>@Model.Title</h2>
+                                <!-- BLOG META -->
+                                <div class="techno-blog-meta">
+                                    <div class="techno-blog-meta-left">
+                                        <span><i class="fa fa-calendar"></i>@Model.LastModificationDate.Value.ToString("dd-MM-yyyy") </span>
+                                        @*<span><i class="fa fa-comments-o"></i>20 Comments </span>
+                                            <span><i class="fa fa-thumbs-up"></i>39 Like </span>*@
+                                    </div>
+                                </div>
+                                <p>@Html.Raw(Model.Description)</p>
+                                <div class="blog_details_dtn_icon">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fa fa-reddit"></i></a>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <div class=" col-lg-4 col-md-5 col-sm-12 col-xs-12 sidebar-right content-widget pdsr">
+                <div class="blog-left-side widget">
+
+                    <div id="em_recent_post_widget-6" class="widget widget_recent_data">
+                        <div class="single-widget-item">
+                            <h2 class="widget-title">Popular Product</h2>
+                            <div class="recent-post-item">
+                                @foreach (var item in ViewBag.RelatedProduct)
+                                {
+                                    <div class="recent-post-image">
+                                        <a href="/product-details/@item.Id/@SlugifyText.GenerateSlug(item.Title)">
+                                            <img width="100" height="80" src="@GetFileAddress.Products/@item.FilePath" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="recent-post-text">
+
+                                        <h4>
+                                            <a href="/blogs-details/@item.Id/@SlugifyText.GenerateSlug(item.Title)">
+                                                @item.Title
+                                            </a>
+                                        </h4>
+                                        @*<span class="rcomment">@item.LastModificationDate.Value.ToString("dd-MM-yyyy")</span>*@
+                                    </div>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

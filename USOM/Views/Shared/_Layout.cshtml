@@ -1,0 +1,288 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    @{ string image = ViewBag.MetaImage == null ? "/content/web/assets/images/logo.png" : ViewBag.MetaImage;}
+    <link rel="shortcut icon" href="~/Content/web/assets/images/logog.png" type="image/x-icon">
+    <title>@ViewBag.Title | Global Cancer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @{ string type = image.Split('.')[1];}
+    <!--Basic meta details-->
+    <meta name="description" content="@Html.Raw(ViewBag.MetaDescription)" />
+    <meta name="keywords" content="@ViewBag.Keywords" />
+    <meta itemprop="url" content="@Request.Url.Host" />
+    <meta property="image:width" content="300">
+    <meta property="image:height" content="200">
+    <meta property="image" content="@image" />
+    <meta property="image:type" content="image/@type" />
+
+
+
+    <!--Begin Facebook share details-->
+    <meta property="og:url" content="@Request.Url.AbsoluteUri" />
+    <meta property="og:locale" content="hi_IN" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Global Cancer" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:description" content="@Html.Raw(ViewBag.MetaDescription)" />
+    <meta property="og:image" itemprop="image" content="@image" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="200" />
+    <meta property="og:image:type" content="image/@type" />
+    <meta property="fb:app_id" content="" />
+
+
+
+
+
+    <!--End of Facebook share details-->
+    <!--Begin twitter share details-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="Jhar News">
+    <meta name="twitter:url" content="@Request.Url.Host">
+    <meta name="twitter:title" content="@ViewBag.Title">
+    <meta name="twitter:description" content="@Html.Raw(ViewBag.MetaDescription)">
+    <meta name="twitter:image" content="@image">
+    <meta name="twitter:image:width" content="300" />
+    <meta name="twitter:image:height" content="200" />
+    <meta property="twitter:image:type" content="image/@type" />
+
+    <!-- CSS Files
+    ================================================== -->
+    <link href="~/content/web/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap" />
+    <link href="~/content/web/assets/css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" id="bootstrap-grid" />
+    <link href="~/content/web/assets/css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css" id="bootstrap-reboot" />
+    <link href="~/content/web/assets/css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="~/content/web/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/content/web/assets/css/color.css" rel="stylesheet" type="text/css">
+    <link href="~/content/web/assets/css/satyam.css" rel="stylesheet" type="text/css">
+
+    <!-- custom background -->
+    <link rel="stylesheet" href="~/content/web/assets/css/bg.css" type="text/css">
+
+    <!-- color scheme -->
+    <link rel="stylesheet" href="~/content/web/assets/css/colors/yellow.css" type="text/css" id="colors">
+
+    <!-- revolution slider -->
+    <link rel="stylesheet" href="~/content/web/assets/rs-plugin/css/settings.css" type="text/css">
+    <link rel="stylesheet" href="~/content/web/assets/css/rev-settings.css" type="text/css">
+</head>
+
+<body id="homepage">
+    <audio id="my-audio" autoplay>
+        <source src="~/Content/web/assets/Video/Music.mp3" type="audio/mpeg">
+    </audio>
+    <div id="wrapper">
+
+        <header class="transparent pl20 pr20">
+            <div class="info">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="column">
+                                Working Hours Monday - Friday <span class="id-color"><strong>08:00-16:00</strong></span>
+                            </div>
+                            <div class="column">
+                                Toll Free <span class="id-color"><strong>1800.899.900</strong></span>
+                            </div>
+                            <!-- social icons -->
+                            <div class="column social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-rss"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                                <a href="#"><i class="fa fa-envelope-o"></i></a>
+                            </div>
+                            <!-- social icons close -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-md-12">
+                        <!-- logo begin -->
+                        <div id="logo">
+                            <a href="/">
+                                <img class="logo" src="images-photography/logo.png" alt="" />
+                            </a>
+                        </div>
+                        <!-- logo close -->
+                        <!-- small button begin -->
+                        <div id="mo-button-open">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <!-- small button close -->
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header close -->
+        <div id="menu-overlay" class="slideDown">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-md-12">
+                        <div id="mo-button-close">
+                            <div class="line-1"></div>
+                            <div class="line-2"></div>
+                        </div>
+
+                        <div class="pt80 pb80">
+                            <div class="mo-nav text-center">
+                                <a href="/">
+                                    <img class="logo" src="images-photography/logo.png" alt="" />
+                                </a>
+
+                                <div class="spacer-single"></div>
+
+                                <!-- mainmenu begin -->
+                                <ul id="mo-menu" class="mm-style-1 mm-hover-underline">
+                                    <li>
+                                        <a href="/" id="homeNav">Home<span></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/board-members">Board Members<span></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/Webgallery">Gallery<span></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/annual-report">Annual Reports<span></span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/donation">Donation <span></span></a>
+                                    </li>
+                                </ul>
+                                <!-- mainmenu close -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @RenderBody()
+    </div>
+    <!-- footer begin -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="~/Content/web/assets/gcci-logo.png" style="max-width: 100%;" class="logo-small img-fluid mx-auto d-block" alt=""><br>
+
+                    <h3>Contact Us</h3>
+                    <div class="widget widget-address">
+                        <address>
+                            <span>
+                                Plot No. 90/24/2,
+                                Near 100 Foota Road Ghitorni
+                                New Delhi-110030
+                            </span>
+                            <span><strong class="text-white">Phone:</strong> 9868542782  </span>
+                            <span>
+                                <strong class="text-white">Email:</strong><a href="mailto:ho@gcci.org.in">ho@gcci.org.in</a>
+                            </span>
+                            @*<span>
+                                    <strong class="text-white">Email:</strong><a href="mailto:finance@gcci.org.in">finance@gcci.org.in</a>
+                                </span>*@
+                            <span><strong class="text-white">Web:</strong><a href="https://www.globalcancer.org/">www.globalcancer.org</a></span>
+                        </address>
+                    </div>
+                </div>
+
+                <div class="col-lg-4" style="margin-top:90px">
+                    <div class="widget widget_recent_post">
+                        @*<h3>Our Location</h3>*@
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7327936.2567976955!2d76.84785827933696!3d26.258616497628225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d18e13acccaa7%3A0x506e204b4aadefdd!2sGlobal%20Cancer%20Concern%20India!5e0!3m2!1sen!2sin!4v1688730672987!5m2!1sen!2sin"
+                                width="350" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget widget_recent_post">
+                        <h3 class="quick-link-heading">Quick Link</h3>
+                        <ul class="quick-links">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/webgallery">Our Gallery</a></li>
+                            <li><a href="/board-members">Our Board</a></li>
+                            <li><a href="/donation">Donation</a></li>
+                            <li><a href="/annual-report">Annual Report</a></li>
+                            <li><a href="/Publications-list">Publication</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                @*<div class="col-lg-4" style="margin-top:85px">
+
+                    </div>*@
+
+
+            </div>
+        </div>
+
+        <div class="subfooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        &copy; Copyright 2023 - Developed & Design by <a href="#">
+                            <span class="id-color">CubeClick India</span>
+                        </a>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <div class="social-icons">
+                            <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" id="back-to-top"></a>
+    </footer>
+    <!-- footer close -->
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="~/content/web/assets/js/plugins.js"></script>
+    <script src="~/content/web/assets/js/designesia.js"></script>
+
+    <!-- SLIDER REVOLUTION SCRIPTS  -->
+    <script type="text/javascript" src="~/content/web/assets/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="~/content/web/assets/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script>
+        window.onload = function () {
+            location.reload(true); // true parameter indicates a hard reload
+        };
+
+        // Wait for the audio element to be fully loaded
+        document.getElementById("my-audio").addEventListener("loadeddata", function () {
+            handleAudio(); // Call the function when the audio is fully loaded
+        });
+
+        function handleAudio() {
+            const audio = document.getElementById("my-audio");
+            console.log("handleAudio function is called.");
+
+            const sectionHero = document.getElementById("section-hero");
+            console.log("sectionHero element:", sectionHero);
+
+            if (!sectionHero) {
+                audio.pause();
+            }
+
+            audio.currentTime = 0;
+            setTimeout(function () {
+                audio.pause();
+            }, 60000);
+        }
+    </script>
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

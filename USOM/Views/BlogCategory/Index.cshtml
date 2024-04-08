@@ -1,0 +1,60 @@
+﻿@model IList<BlogCategoryViewModel>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Page = "Blog Category";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <div class="pull-right tableTools-container"></div>
+        </div>
+
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+        <div>
+            <div class="form-group">
+                <a href="/BlogCategory/Create" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i> Create New</a>
+            </div>
+            <table id="search" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Title </th>
+                        <th>
+                            <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+                            Last Update
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{ int i = 0; }
+                    @foreach (var item in Model.OrderByDescending(a => a.Id).ToList())
+                    {
+                        i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.Title</td>
+
+                            <td>@item.LastModificationDate.Value.ToString("dd/MMM/yyyy")</td>
+                            <td>
+                                <div class="action-buttons">
+                                    <a class="green" href="/BlogCategory/Edit/@item.Id" title="Edit Blog Category">
+                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                    </a>
+
+                                    <a class="red" href="/BlogCategory/Remove/@item.Id" title="Delete Blog Category">
+                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

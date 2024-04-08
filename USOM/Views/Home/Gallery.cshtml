@@ -1,0 +1,68 @@
+﻿@model IList<GalleryEntity>
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background" style="background-image: url(../../Content/web/images/breadcraam.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Gallery</h1>
+                <ul class="crumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>Gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+
+
+<!-- content begin -->
+<div id="content" class="no-top no-bottom">
+    <!-- section begin -->
+    <section id="section-portfolio" class="no-top no-bottom" aria-label="section-portfolio">
+        <div class="container">
+
+            <div class="spacer-single"></div>
+
+            <!-- portfolio filter begin -->
+           
+
+
+
+            <div id="gallery" class="row grid_gallery gallery de-gallery wow fadeInUp" data-wow-delay=".3s">
+                @foreach (var item in Model.OrderByDescending(a => a.Id))
+                {
+                    <!-- gallery item -->
+                    <div class="col-md-3 item residential">
+                        <div class="picframe">
+                            <a class="image-popup-gallery" href="@GetFileAddress.Gallery/@item.FilePath">
+                                <span class="overlay">
+                                    <span class="pf_text">
+                                        <span class="project-name">@item.Title</span>
+                                    </span>
+                                </span>
+                            </a>
+                            <img src="@GetFileAddress.Gallery/@item.FilePath" alt="" />
+                        </div>
+                    </div>
+                    <!-- close gallery item -->
+                }
+
+                </div>
+
+        </div>
+
+    </section>
+    <!-- section close -->
+   
+    <!-- logo carousel section close -->
+
+
+
+</div>

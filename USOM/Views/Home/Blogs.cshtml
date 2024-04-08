@@ -1,0 +1,52 @@
+﻿@model IList<BlogEntity>
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background" style="background-image: url(../../Content/web/assets/images/background/subheader-3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Blog</h1>
+                <ul class="crumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>Blog</li>
+                    <li class="sep">/</li>
+                    <li>@Model.FirstOrDefault().BlogCategory.Title</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.OrderByDescending(a => a.Id))
+            {
+                <div class="col-lg-4 col-md-6 mb30">
+                    <div class="bloglist item">
+                        <div class="post-content">
+                            <div class="post-image">
+                                <a class="image-popup-no-margins" href="/blog-details/@item.Id/@SlugifyText.GenerateSlug(item.Title)">
+                                    <img alt="" src="@GetFileAddress.Blog/@item.FilePath">
+                                </a>
+                            </div>
+                            <div class="post-text">
+                                @*<span class="p-tagline">Tips &amp Tricks</span>*@
+                                <h4><a href="/blog-details/@item.Id/@SlugifyText.GenerateSlug(item.Title)">@item.Title</a></h4>
+                                <p style="overflow: hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; ">@item.Excerpt</p>
+                                <span class="p-date"> @item.LastModificationDate.Value.Date.ToString("MMMM dd, yyyy")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            </div> 
+    </div>
+</div>

@@ -1,0 +1,292 @@
+﻿@model HeaderDataCount
+@{
+    ViewBag.Title = "DashBoard";
+    ViewBag.Post = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="row">
+
+            <div class="space-6"></div>
+            <div class="col-sm-12 infobox-container">
+                @*<div class="infobox infobox-green">
+                        <div class="infobox-icon">
+                            <i class="ace-icon fa fa-rss"></i>
+                        </div>
+                        <div class="infobox-data">
+                            @if (Model.RoomCount == 0)
+                            {
+                                <span class="infobox-data-number">0</span>
+                            }
+                            else
+                            {
+                                <span class="infobox-data-number">@Model.RoomCount</span>
+                            }
+                            <div class="infobox-content"><a href="/Room/index">Total Room</a></div>
+                        </div>
+                    </div>
+
+                    <div class="infobox infobox-blue">
+                        <div class="infobox-icon">
+                            <i class="ace-icon fa fa-user-md"></i>
+                        </div>
+
+                        <div class="infobox-data">
+                            @if (Model.MenuCount == 0)
+                            {
+                                <span class="infobox-data-number">0</span>
+                            }
+                            else
+                            {
+                                <span class="infobox-data-number">@Model.MenuCount</span>
+                            }
+                            <div class="infobox-content"><a href="/Menu/index">Total Menu</a> </div>
+                        </div>
+                    </div>*@
+
+                <div class="infobox infobox-pink">
+                    <div class="infobox-icon">
+                        <i class="ace-icon fa fa-hospital-o"></i>
+                    </div>
+
+                    <div class="infobox-data">
+                        @if (Model.ServiceCount == 0)
+                        {
+                            <span class="infobox-data-number">0</span>
+                        }
+                        else
+                        {
+                            <span class="infobox-data-number">@Model.ServiceCount</span>
+                        }
+                        <div class="infobox-content"><a href="/Services/index">Total Services</a></div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="infobox infobox-blue2">
+                    <div class="infobox-icon">
+                        <i class="ace-icon fa fa-photo"></i>
+                    </div>
+
+                    <div class="infobox-data">
+                        @if (Model.GalleryCount == 0)
+                        {
+                            <span class="infobox-data-number">0</span>
+                        }
+                        else
+                        {
+                            <span class="infobox-data-number">@Model.GalleryCount</span>
+                        }
+                        <div class="infobox-content"><a href="/Gallery/index">Total Images</a></div>
+                    </div>
+                </div>
+                <div class="space-6"></div>
+                <div class="space-6"></div>
+
+            </div>
+
+            <div class="vspace-12-sm"></div>
+        </div>
+    </div><!-- /.row -->
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <h3 class="text-center">Daily Collection</h3>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        @if (Model.DayWiseCollection == null || !Model.DayWiseCollection.Any())
+                        {
+                            <p>No collection</p>
+                        }
+                        else
+                        {
+                            <table class="table table-bordered table-striped mb-0">
+                                <thead class="thin-border-bottom">
+                                    <tr>
+                                        <th>Sl No.</th>
+                                        <th>Date</th>
+                                        <th>Collection</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @{ int i = 0; }
+                                    @foreach (var item in Model.DayWiseCollection)
+                                    {
+                                        i++;
+                                        if (Model.DayWiseCollection.Count != 0)
+                                        {
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@item.TransactionDate</td>
+                                                <td>@item.Amount</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                                        }
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <h3 class="text-center">Week Wise Collection</h3>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped mb-0">
+                            <thead class="thin-border-bottom">
+                                <tr>
+                                    <th>Sl No.</th>
+                                    <th>Date</th>
+                                    <th>Collection</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @{ int j = 0; }
+                                @foreach (var item in Model.WeekWiseCollection)
+                                {
+                                    j++;
+                                    
+                                    <tr>
+                                        <td>@j</td>
+                                        <td>@item.TransactionDate</td>
+                                        <td>@item.Amount</td>
+                                    </tr>
+                                }
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <h3 class="text-center">Month Wise Collection</h3>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped mb-0">
+                            <thead class="thin-border-bottom">
+                                <tr>
+                                    <th>Sl No.</th>
+                                    <th>Month</th>
+                                    <th>Collection</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @{ int k = 0; }
+                                @foreach (var item in Model.MonthWiseCollection)
+                                {
+                                   k++;
+                                    <tr>
+                                        <td>@k</td>
+                                        <td>@item.TransactionDate</td>
+                                        <td>@item.Amount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<div class="row">
+        <div class="col-sm-6">
+            <div class="widget-box transparent">
+                <div class="widget-header widget-header-flat">
+                    <h4 class="widget-title lighter">
+                        <i class="ace-icon fa fa-star orange"></i>
+                        Latest Enquiry
+                    </h4>
+
+                    <div class="widget-toolbar">
+                        <a href="#" data-action="collapse">
+                            <i class="ace-icon fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main no-padding">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thin-border-bottom">
+                                <tr>
+                                    <th>Sl No.</th>
+                                    <th>Name </th>
+                                    <th>Email </th>
+                                    <th>Phone Number </th>
+                                    <th>Subject </th>
+                                    <th>Message </th>
+                                </tr>
+                            </thead>
+
+                            <tbo
+                                </tbody>
+                        </table>
+                    </div>-->
+    <!-- /.widget-main -->
+    <!--</div>--><!-- /.widget-body -->
+    <!--</div>--><!-- /.widget-box -->
+    <!--</div>--><!-- /.col -->
+    <!--<div class="col-sm-6">
+        <div class="widget-box">
+            <div class="widget-header">
+                <h4 class="widget-title lighter smaller">
+                    <i class="ace-icon fa fa-comment blue"></i>
+                    Testimonials
+                </h4>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main no-padding">
+                    <div class="dialogs">
+                         @foreach (var item in Model.Testimonials.ToList())
+                         {
+                        <div class="itemdiv dialogdiv">
+                            <div class="user">
+                                <img alt="Alexa's Avatar" src="@GetFileAddress.Testimonial/@item.FilePath" />
+                            </div>
+
+                            <div class="body">
+                                <div class="time">
+                                    <i class="ace-icon fa fa-clock-o"></i>
+                                    <span class="green">@item.LastModificationDate.Value.ToString("dd/MMM/yyyy")</span>
+                                </div>
+
+                                <div class="name">
+                                    <a href="#">@item.Title</a>
+                                </div>
+                                <div class="text">@item.Description</div>
+
+                                <div class="tools">
+                                    <a href="#" class="btn btn-minier btn-info">
+                                        <i class="icon-only ace-icon fa fa-share"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                         }
+                    </div>
+
+
+                </div>-->
+    <!-- /.widget-main -->
+    <!--</div>--><!-- /.widget-body -->
+    <!--</div>--><!-- /.widget-box -->
+    <!--</div>-->  <!-- /.col -->
+    <!--</div>-->
+</div>

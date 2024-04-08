@@ -1,0 +1,65 @@
+﻿@model IList<AnnouncementEntity>
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Page = "Announcement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <div class="pull-right tableTools-container"></div>
+        </div>
+
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+        <div>
+            <div class="form-group">
+                <a href="/Announcement/Create" class="btn btn-primary btn-sm"><i class="fa fa-plus-circle"></i> Create New</a>
+            </div>
+            <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Sl. No.</th>
+                        <th>Title </th>
+                        <th>Announcement Category</th>
+                        <th>Image File</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @{ int i = 0; }
+                    @foreach (var item in Model.OrderByDescending(a => a.Id).ToList())
+                    {
+                        i++;
+
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.Title</td>
+                            <td>@item.AnnouncementCategory.Title</td>
+                            <td>
+                                @if (item.FilePath != null && !string.IsNullOrEmpty(item.FilePath))
+                                {
+                                    <a href="@GetFileAddress.Announcement/@item.FilePath" target="_blank">view file</a>
+                                }
+                            </td>
+
+                            <td>
+                                <div class="action-buttons">
+                                    <a class="green" href="/Announcement/Edit/@item.Id" title="Edit Announcement">
+                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                    </a>
+
+                                    <a class="red" href="/Announcement/Remove/@item.Id" title="Delete Announcement">
+                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

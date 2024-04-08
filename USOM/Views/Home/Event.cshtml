@@ -1,0 +1,53 @@
+﻿@model IList<EventEntity>
+@{
+    ViewBag.Title = "Event";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- subheader -->
+<section id="subheader" data-speed="8" data-type="background" style="background-image: url(../../Content/web/assets/images/background/subheader-3.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Event</h1>
+                <ul class="crumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="sep">/</li>
+                    <li>Event</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- subheader close -->
+<!-- content begin -->
+<div id="content" class="no-top no-bottom">
+    @foreach (var item in Model)
+    {
+        <div>
+            @if (item.Id  != 0)
+            {
+                <!-- section service begin -->
+                <section id="@(item.Id %2 != 0 ? "section-service-1" : "section-service-2")" class="side-bg no-padding">
+                    <div class="image-container col-lg-5 @(item.Id %2 != 0 ? "pull-left" : "offset-lg-7 col-md-12 pull-right")" data-delay="0">
+                        <div class="background-image" style="background-image: url('@GetFileAddress.Event/@item.FilePath');"></div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="inner-padding">
+                                <div class="col-lg-6  col-md-12 wow @(item.Id %2 != 0 ? "fadeInRight offset-lg-6 " : "fadeInLeft") " data-wow-delay=".5s">
+                                    <h3 class="id-color">@item.Title</h3>
+                                    @item.Excerpt
+                                    <div class="spacer-single"></div>
+                                    <a href="/Event-details/@item.Id/@SlugifyText.GenerateSlug(item.Title)" class="btn-line">Read More</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+        </div>
+    }
+    </div>

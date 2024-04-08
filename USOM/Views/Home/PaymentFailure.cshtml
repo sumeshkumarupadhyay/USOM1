@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed</title>
+    <link href="~/Content/web/assets/css/satyam.css" rel="stylesheet" />
+    <style>
+    body {
+      margin: 0;
+      padding: 20px; /* Add some padding for better visual */
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      border: 3px double #ff3333;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .content {
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 72px;
+      color: #ff3333;
+      margin-bottom: 20px;
+      animation: shake 0.5s infinite alternate;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #333333;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666666;
+      margin: 0;
+    }
+        .button-like {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff3333;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .button-like:hover {
+                background-color: #0056b3;
+            }
+
+    @*@keyframes shake {
+      from {
+        transform: rotate(-5deg);
+      }
+      to {
+        transform: rotate(5deg);
+      }
+    }*@
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="icon shake-icon">&#10060;</div>
+            <h2>Payment Failed</h2>
+            <p>Oops! Yours Payment Failed Due to @ViewBag.FailureReason</p>
+            <a href="/home/payment" class="button-like">Retry Payment</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model AnnouncementViewModel
+@{
+    ViewBag.Title = "Create";
+    ViewBag.Page = "Announcement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <div class="pull-right tableTools-container"></div>
+        </div>
+
+        <div class="col-xs-10 col-lg-6">
+            <!-- PAGE CONTENT BEGINS -->
+            @using (Html.BeginForm("Create", "Announcement", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", @id = "Announcement-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label for="form-field-1">Enter Heading <strong style="color: red">*</strong></label>
+                    @Html.TextBoxFor(a => a.Title, new { @class = "form-control", placeholder = "Enter Heading", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label>Select Announcement Category <strong style="color: red">*</strong></label>
+                    @Html.DropDownListFor(a => a.AnnouncementCategoryId, new SelectList(ViewBag.AnnouncementCategory, "Id", "Title"), new { @class = "form-control", required = "required" })
+                </div>
+
+                <div class="form-group">
+                    .
+                    <label for="form-field-1">Upload and Image<br /><strong style="color: red">*</strong><br /><strong style="color:red">Image Dimentions should be 390x290 px and max size 512 KB</strong></label>
+
+                    <input type="file" name="File" id="id-input-file-2" required />
+                </div>
+                <div class="space-4"></div>
+                <div class="clearfix form-actions">
+                    <div>
+                        <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+                <div class="hr hr-24"></div>
+            }
+
+            <div class="hr hr-18 dotted hr-double"></div>
+
+            <!-- PAGE CONTENT ENDS -->
+        </div>
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+    </div>
+</div>

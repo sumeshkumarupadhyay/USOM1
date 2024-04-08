@@ -1,0 +1,81 @@
+﻿@model FaqViewModel
+@{
+    ViewBag.Title = "Create";
+    ViewBag.Page = "Faq";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="clearfix">
+            <div class="pull-right tableTools-container"></div>
+        </div>
+
+        <div class="col-xs-10 col-lg-6">
+            <!-- PAGE CONTENT BEGINS -->
+            @using (Html.BeginForm("Create", "Faq", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", role = "form", @id = "Announcement-form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <label for="form-field-1">Enter Heading <strong style="color: red">*</strong></label>
+                    @Html.TextBoxFor(a => a.Title, new { @class = "form-control", placeholder = "Enter Heading", required = "required" })
+                </div>
+                @*<div class="form-group">
+                    <label>Select Faq Category <strong style="color: red">*</strong></label>
+                    @Html.DropDownListFor(a => a.FaqTypeId, new SelectList(ViewBag.FaqCategory, "Id", "Title"), new { @class = "form-control", required = "required" })
+                </div>*@
+
+                @*<div class="form-group">
+                    <label for="form-field-1">Excerpt<strong style="color: red">*</strong> <br /> <strong style="color: red">Short Description for  Website in 90 Characters </strong></label>
+                    @Html.TextBoxFor(a => a.Excerpt, new { @maxlength = "90", @class = "form-control", placeholder = "Enter Short Description in 90 Characters", required = "required" })
+                </div>*@
+
+                <div class="form-group">
+                    <label for="form-field-1">Enter Description<strong style="color: red">*</strong></label>
+                    <textarea name="Description" class="form-control rich-text-area" placeholder="Enter Description"></textarea>
+                </div>
+                @*<div class="form-group">
+                        <label for="form-field-1">Enter Youtube Link</label>
+                        @Html.TextBoxFor(a => a.YoutubeLink, new { @class = "form-control", placeholder = "Enter Youtube Video Embeded Link", required = "required" })
+                    </div>*@
+                @*<div class="form-group">
+                    <label for="form-field-1">Enter Tags<strong style="color: red">*</strong></label>
+                    @Html.TextBoxFor(a => a.Tags, new { @class = "form-control", placeholder = "Enter Comma Seprated Tags Ex. Post,Faq", required = "required" })
+                </div>
+                <div class="form-group">
+                    <label for="form-field-1">Featured </label>
+                    @Html.CheckBoxFor(a => a.IsFeatured)
+                </div>*@
+                @*<div class="form-group">
+                    .
+                    <label for="form-field-1">Upload and Image<br /><strong style="color: red">*</strong><br /><strong style="color:red">Image Dimentions should be 848 x 600 px and max size 512 KB</strong></label>
+
+                    <input type="file" name="File" id="id-input-file-2" required />
+                </div>*@
+                <div class="space-4"></div>
+                <div class="clearfix form-actions">
+                    <div>
+                        <button class="btn btn-info" type="submit">
+                            <i class="ace-icon fa fa-check bigger-110"></i>
+                            Submit
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset">
+                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                            Reset
+                        </button>
+                    </div>
+                </div>
+                <div class="hr hr-24"></div>
+            }
+
+            <div class="hr hr-18 dotted hr-double"></div>
+
+            <!-- PAGE CONTENT ENDS -->
+        </div>
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+    </div>
+</div>
